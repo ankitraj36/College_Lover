@@ -46,7 +46,7 @@ const resources = [
         semester: "6th Sem", 
         type: "PPT", 
         size: "3.1 MB", 
-        link: "#" 
+        link: "https://drive.google.com/drive/folders/1bmIb7mhjpvHe9Fy8htbmp8_7Zz0YQhAC?usp=sharing" 
     },
 
 
@@ -69,4 +69,5 @@ const resources = [
         size: "3.8 MB", 
         link: "#" 
     }
+
 ];
