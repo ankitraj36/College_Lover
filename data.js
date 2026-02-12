@@ -9,7 +9,7 @@
 const resources = [
     // --- SUBJECT 1: GAME PROGRAMMING (GPWC) ---
     { 
-        title: "Game Programming with C++ (Unit 1)", 
+        title: "Game Programming with C++", 
         subject: "Computer Science", 
         semester: "6th Sem", 
         type: "PDF", 
@@ -20,7 +20,7 @@ const resources = [
 
     // --- SUBJECT 2: DATABASES (ITD) ---
     { 
-        title: "Introduction to Databases (Complete Notes)", 
+        title: "Introduction to Databases", 
         subject: "Computer Science", 
         semester: "6th Sem", 
         type: "PDF", 
