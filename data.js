@@ -32,7 +32,7 @@ const resources = [
     // --- SUBJECT 3: COMPUTER NETWORKING (CN) ---
     { 
         title: "Computer Networking: Security", 
-        subject: "Computer Science", 
+        subject: ["IoT" , "Computer Science"], 
         semester: "6th Sem", 
         type: "PPT", 
         size: "5.5 MB", 
@@ -68,7 +68,19 @@ const resources = [
         type: "PDF", 
         size: "3.8 MB", 
         link: "https://drive.google.com/file/d/1oxqKs_RBcBzhSBWoO57L6twMLfQWwiyb/view?usp=sharing" 
+    },
+    {
+    id: 13,
+    title: "Robotics Programming Workshop 2",
+    subject: "IoT",
+    semester: "6th Semester",
+    department:"IoT",
+    credits: 4,
+    type: "Textbook",
+    size: "10 MB",
+    link: "#"
     }
+
 
 ];
 
