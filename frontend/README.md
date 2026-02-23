@@ -1,16 +1,90 @@
-# React + Vite
+# 🎓 College Lover — Study Material Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack MERN (MongoDB, Express, React, Node.js) study material management platform with Firebase authentication.
 
-Currently, two official plugins are available:
+## 📁 Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+frontend/
+├── server/           # Express.js backend (API)
+│   ├── config/       # Database & Firebase config
+│   ├── controllers/  # Route handlers
+│   ├── middlewares/   # Auth & error middleware
+│   ├── models/       # Mongoose schemas
+│   ├── routes/       # API routes
+│   ├── seeds/        # Database seed script
+│   ├── utils/        # Utility helpers
+│   ├── validations/  # Express-validator rules
+│   ├── app.js        # Express app setup
+│   └── server.js     # Server entry point
+├── src/              # React frontend (Vite)
+│   ├── components/   # React components
+│   ├── config/       # Firebase client config
+│   ├── context/      # Auth context
+│   ├── pages/        # Page components
+│   ├── services/     # API service (Axios)
+│   └── styles/       # CSS files
+├── .env              # Environment variables (both server & client)
+├── package.json      # Unified dependencies & scripts
+└── vite.config.js    # Vite config with API proxy
+```
 
-## React Compiler
+## 🚀 Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
+- Node.js 18+
+- MongoDB running locally or a cloud URI
+- Firebase project (for social login)
 
-## Expanding the ESLint configuration
+### Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Install dependencies:**
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+2. **Configure environment:**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your MongoDB URI, JWT secret, and Firebase credentials
+   ```
+
+3. **Seed the database (optional):**
+   ```bash
+   npm run seed
+   ```
+
+### Development
+
+Run both frontend and backend concurrently:
+```bash
+npm run dev:all
+```
+
+Or run them separately:
+```bash
+# Frontend only (Vite dev server on port 5173)
+npm run dev
+
+# Backend only (Express API on port 5000)
+npm run dev:server
+```
+
+### Production
+
+```bash
+# Build the frontend
+npm run build
+
+# Start the production server (serves both API & static files)
+npm start
+```
+
+## 📝 Login Credentials (after seeding)
+
+| Role    | Email                    | Password    |
+|---------|--------------------------|-------------|
+| Admin   | admin@collegelover.com   | admin123    |
+| Student | rahul@student.com        | student123  |
+| Student | priya@student.com        | student123  |
