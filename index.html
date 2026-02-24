@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>College Lover - Study Material</title>
@@ -7,7 +8,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -22,10 +23,15 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#departments">Departments</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item">
+                        <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">
+                            <i class="fa-solid fa-moon"></i>
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -35,83 +41,171 @@
         <div class="container">
             <h1 class="fw-bold mb-3 display-5">Find Your Study Material</h1>
             <p class="mb-4 opacity-75">Search by subject, semester, or book title</p>
-            <input type="text" id="searchInput" class="form-control w-75 mx-auto" placeholder="e.g., Data Structures, 3rd Sem, Engineering...">
+            <input type="text" id="searchInput" class="form-control w-75 mx-auto"
+                placeholder="e.g., Data Structures, 3rd Sem, Engineering...">
         </div>
     </section>
 
-  <section id="departments" class="py-5 bg-light">
-    <div class="container">
-
-        <h3 class="fw-bold text-center mb-4">
-            Browse by Department
-        </h3>
-
-        <div class="row g-4">
-
-            <div class="col-6 col-md-3">
-                <div class="card shadow-sm text-center h-100"
-                     onclick="filterByDept('Computer Science')"
-                     style="cursor:pointer">
-                    <div class="card-body">
-                        <i class="fa-solid fa-laptop-code fa-2x text-primary mb-3"></i>
-                        <h6 class="fw-semibold">Computer Science</h6>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3">
-                <div class="card shadow-sm text-center h-100"
-                     onclick="filterByDept('AI & ML')"
-                     style="cursor:pointer">
-                    <div class="card-body">
-                        <i class="fa-solid fa-gears fa-2x text-danger mb-3"></i>
-                        <h6 class="fw-semibold">AI & ML</h6>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3">
-                <div class="card shadow-sm text-center h-100"
-                     onclick="filterByDept('Data analytics')"
-                     style="cursor:pointer">
-                    <div class="card-body">
-                        <i class="fa-solid fa-chart-line fa-2x text-success mb-3"></i>
-                        <h6 class="fw-semibold">Data Analytics</h6>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3">
-                <div class="card shadow-sm text-center h-100"
-                     onclick="filterByDept('IoT')"
-                     style="cursor:pointer">
-                    <div class="card-body">
-                        <i class="fa-solid fa-microchip fa-2x text-warning mb-3"></i>
-                        <h6 class="fw-semibold">IoT</h6>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-    <section class="py-5 bg-white">
+    <section id="departments" class="py-5">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h3 class="fw-bold">Available Notes</h3>
-                <button class="btn btn-sm btn-outline-secondary" onclick="renderMaterials(resources)">Reset Filter</button>
+            <h3 class="fw-bold text-center section-title">Browse by Department</h3>
+
+            <div class="row g-4 justify-content-center mt-4">
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="dept-card" onclick="filterByDept('Computer Science')">
+                        <i class="fa-solid fa-laptop-code text-primary"></i>
+                        <h6 class="fw-bold mb-0">CSE</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="dept-card" onclick="filterByDept('CSIT')">
+                        <i class="fa-solid fa-network-wired text-info"></i>
+                        <h6 class="fw-bold mb-0">CSIT</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="dept-card" onclick="filterByDept('AI & ML')">
+                        <i class="fa-solid fa-brain text-danger"></i>
+                        <h6 class="fw-bold mb-0">AI & ML</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="dept-card" onclick="filterByDept('Data analytics')">
+                        <i class="fa-solid fa-chart-pie text-success"></i>
+                        <h6 class="fw-bold mb-0">Data Analytics</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="dept-card" onclick="filterByDept('IoT')">
+                        <i class="fa-solid fa-microchip text-warning"></i>
+                        <h6 class="fw-bold mb-0">IoT</h6>
+                    </div>
+                </div>
             </div>
-            
+        </div>
+    </section>
+
+    <section id="notes" class="py-5">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-5">
+                <div class="text-center text-md-start">
+                    <h3 class="fw-bold section-title mb-1 text-md-start">Available Resources</h3>
+                    <p class="text-muted">Explore high-quality study materials for your semester.</p>
+                </div>
+                <button class="btn btn-outline-primary rounded-pill px-4 mt-3 mt-md-0"
+                    onclick="renderMaterials(resources)">
+                    <i class="fa-solid fa-rotate-left me-2"></i> Reset Filter
+                </button>
+            </div>
+
             <div id="materialsContainer" class="row g-4">
-                </div>
+                <!-- Materials will be rendered here -->
+            </div>
         </div>
     </section>
 
-    <footer class="bg-dark text-white text-center py-4 mt-5">
+    <section id="about" class="py-5">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h3 class="fw-bold section-title">About College Lover</h3>
+                    <p class="lead text-muted mb-4">Dedicated to providing students with the best study materials,
+                        notes, and resources to excel in their academic journey.</p>
+                    <div class="row g-4 text-center mt-2">
+                        <div class="col-md-4">
+                            <div class="p-3">
+                                <i class="fa-solid fa-bolt fa-2x text-primary mb-3"></i>
+                                <h6 class="fw-bold">Fast Access</h6>
+                                <p class="small text-muted">Quick download links for all your needs.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3">
+                                <i class="fa-solid fa-shield-halved fa-2x text-primary mb-3"></i>
+                                <h6 class="fw-bold">Verified Info</h6>
+                                <p class="small text-muted">Materials verified by top students.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3">
+                                <i class="fa-solid fa-face-smile fa-2x text-primary mb-3"></i>
+                                <h6 class="fw-bold">Free Forever</h6>
+                                <p class="small text-muted">No hidden costs, purely for students.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer pt-5 mt-5">
         <div class="container">
-            <p class="mb-0">© 2026 College Lover. Built for students.</p>
+            <div class="row g-4 mb-5">
+                <!-- Column 1: Intro -->
+                <div class="col-lg-4 col-md-6">
+                    <a class="navbar-brand text-white fw-bold fs-3 mb-3 d-block" href="#">
+                        <i class="fa-solid fa-graduation-cap me-2 text-primary"></i>College Lover
+                    </a>
+                    <p class="mt-3 pe-lg-5">Your ultimate hub for high-quality study materials, notes, and academic
+                        resources. Empowering students to excel in their educational journey.</p>
+                    <div class="mt-4">
+                        <a href="https://github.com/ankitraj36" class="footer-social-icon" target="_blank"><i
+                                class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ankit-raj-319201307/" class="footer-social-icon"
+                            target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://x.com/Baby90Danger" class="footer-social-icon" target="_blank"><i
+                                class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Home</a></li>
+                        <li><a href="#departments" class="footer-link">Departments</a></li>
+                        <li><a href="#about" class="footer-link">About Us</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources -->
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-heading">Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="#notes" class="footer-link">Study Materials</a></li>
+                        <li><a href="#notes" class="footer-link">Lecture Notes</a></li>
+                        <li><a href="#notes" class="footer-link">Latest Syllabus</a></li>
+                        <li><span class="footer-link opacity-50">Question Bank (Soon)</span></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Personal / Contact -->
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="footer-heading">Get in Touch</h5>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-user text-primary"></i>
+                        <span>Ankit Raj</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-envelope text-primary"></i>
+                        <a href="ankitraj3736@gmail.com"
+                            class="text-decoration-none text-reset footer-link m-0">ankitraj3736@gmail.com</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-location-dot text-primary"></i>
+                        <span>Engineering Campus, India</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom text-center">
+            <div class="container">
+                <p class="mb-0 small opacity-75">© 2026 College Lover. Designed & Developed by <strong>Ankit
+                        Raj</strong>. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -119,6 +213,7 @@
 
     <script src="data.js"></script>
     <script src="sc.js"></script>
- 
+
 </body>
+
 </html>
