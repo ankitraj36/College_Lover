@@ -67,7 +67,7 @@ const resources = [
         semester: "6th Sem",
         type: "PDF",
         size: "3.8 MB",
-        link: "https://drive.google.com/file/d/1oxqKs_RBcBzhSBWoO57L6twMLfQWwiyb/view?usp=sharing"
+        link: "https://drive.google.com/file/d/1usXYJ_slN5XFI2m6_FUZFW_FhX_ALA8q/view?usp=sharing"
     },
     {
 
