@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="College Lover - Your ultimate college study hub. Access free notes, PYQs, syllabus and study materials organized by department and semester.">
+    <meta name="keywords"
+        content="college notes, study materials, PYQs, previous year questions, syllabus, free notes, CSE, CSIT, AI ML, IoT">
+    <meta name="google-adsense-account" content="ca-pub-2596245302131897">
+    <title>College Lover — Your Ultimate College Study Hub</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="graduate-cap.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: { 50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc', 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 800: '#3730a3', 900: '#312e81' },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="font-sans bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 antialiased transition-colors duration-300">
+
+    <!-- ══════════ NAVBAR ══════════ -->
+    <nav id="navbar"
+        class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200/60 dark:border-slate-700/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-18">
+                <a href="#" class="flex items-center gap-2 group">
+                    <div
+                        class="w-9 h-9 bg-gradient-to-br from-brand-500 to-brand-700 rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/25 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-graduation-cap text-white text-sm"></i>
+                    </div>
+                    <span
+                        class="text-xl font-extrabold bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">College
+                        Lover</span>
+                </a>
+                <div class="hidden lg:flex items-center gap-1">
+                    <a href="#home"
+                        class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-500/10 transition-all">Home</a>
+                    <a href="#notes"
+                        class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-500/10 transition-all">Notes</a>
+                    <a href="#notes"
+                        class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-500/10 transition-all">PYQs</a>
+                    <a href="#notes"
+                        class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-500/10 transition-all">Syllabus</a>
+                    <a href="#upload"
+                        class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-500/10 transition-all">Upload</a>
+                    <a href="#about"
+                        class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-500/10 transition-all">About</a>
+                    <a href="#contact"
+                        class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-500/10 transition-all">Contact</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button id="themeToggle"
+                        class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-brand-100 dark:hover:bg-brand-500/20 hover:text-brand-600 dark:hover:text-brand-400 transition-all hover:scale-110"
+                        title="Toggle Theme">
+                        <i class="fa-solid fa-moon text-lg"></i>
+                    </button>
+                    <button id="menuBtn"
+                        class="lg:hidden w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-brand-100 transition-all">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu"
+            class="lg:hidden hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shadow-2xl">
+            <div class="px-4 py-4 space-y-1">
+                <a href="#home"
+                    class="mobile-link block px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 font-medium hover:bg-brand-50 dark:hover:bg-brand-500/10 hover:text-brand-600 transition-all">Home</a>
+                <a href="#notes"
+                    class="mobile-link block px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 font-medium hover:bg-brand-50 dark:hover:bg-brand-500/10 hover:text-brand-600 transition-all">Notes</a>
+                <a href="#notes"
+                    class="mobile-link block px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 font-medium hover:bg-brand-50 dark:hover:bg-brand-500/10 hover:text-brand-600 transition-all">PYQs</a>
+                <a href="#notes"
+                    class="mobile-link block px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 font-medium hover:bg-brand-50 dark:hover:bg-brand-500/10 hover:text-brand-600 transition-all">Syllabus</a>
+                <a href="#upload"
+                    class="mobile-link block px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 font-medium hover:bg-brand-50 dark:hover:bg-brand-500/10 hover:text-brand-600 transition-all">Upload</a>
+                <a href="#about"
+                    class="mobile-link block px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 font-medium hover:bg-brand-50 dark:hover:bg-brand-500/10 hover:text-brand-600 transition-all">About</a>
+                <a href="#contact"
+                    class="mobile-link block px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 font-medium hover:bg-brand-50 dark:hover:bg-brand-500/10 hover:text-brand-600 transition-all">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ══════════ HERO ══════════ -->
+    <section id="home"
+        class="relative min-h-[92vh] flex items-center justify-center overflow-hidden hero-gradient pt-20">
+        <div class="hero-blob blob-1"></div>
+        <div class="hero-blob blob-2"></div>
+        <div class="hero-blob blob-3"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+            <div class="reveal">
+                <span
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100/80 dark:bg-brand-500/20 text-brand-700 dark:text-brand-300 text-sm font-semibold mb-6 backdrop-blur-sm border border-brand-200/50 dark:border-brand-500/30">
+                    <i class="fa-solid fa-sparkles"></i> Free Study Resources for Every Student
+                </span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight mb-6 reveal">
+                Your Ultimate<br>
+                <span
+                    class="bg-gradient-to-r from-brand-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">College
+                    Study Hub</span>
+            </h1>
+            <p
+                class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed reveal">
+                Access high-quality notes, previous year questions, syllabi, and study materials — all organized by
+                department and semester, completely free.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center reveal">
+                <a href="#notes"
+                    class="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-600 to-brand-500 text-white rounded-2xl font-semibold shadow-xl shadow-brand-500/25 hover:shadow-2xl hover:shadow-brand-500/40 hover:-translate-y-1 transition-all duration-300">
+                    <i class="fa-solid fa-book-open group-hover:rotate-12 transition-transform"></i> Browse Notes
+                </a>
+                <a href="#upload"
+                    class="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-2xl font-semibold border-2 border-slate-200 dark:border-slate-700 hover:border-brand-400 hover:-translate-y-1 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <i class="fa-solid fa-cloud-arrow-up group-hover:-translate-y-1 transition-transform"></i> Upload
+                    Notes
+                </a>
+            </div>
+            <div class="mt-16 grid grid-cols-3 gap-6 max-w-md mx-auto reveal">
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-brand-600 dark:text-brand-400 counter"
+                        data-target="500">0</div>
+                    <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Study Materials</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-brand-600 dark:text-brand-400 counter"
+                        data-target="5">0</div>
+                    <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Departments</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-brand-600 dark:text-brand-400 counter"
+                        data-target="1000">0</div>
+                    <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Students Helped</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ FEATURES ══════════ -->
+    <section id="features" class="py-20 lg:py-28 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-600 dark:text-brand-400 font-semibold text-sm uppercase tracking-wider">Why
+                    Choose Us</span>
+                <h2 class="text-3xl lg:text-5xl font-extrabold mt-3">Everything You Need to <span
+                        class="bg-gradient-to-r from-brand-600 to-purple-500 bg-clip-text text-transparent">Ace Your
+                        Exams</span></h2>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                <div
+                    class="feature-card group reveal p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 hover:border-brand-400/50 hover:shadow-2xl hover:shadow-brand-500/10 hover:-translate-y-2 transition-all duration-300">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-6 shadow-lg shadow-blue-500/25 group-hover:scale-110 group-hover:rotate-3 transition-all">
+                        <i class="fa-solid fa-book-open text-white text-xl"></i></div>
+                    <h3 class="text-lg font-bold mb-2">Free Study Materials</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Access thousands of curated
+                        notes, textbooks, and reference materials at zero cost.</p>
+                </div>
+                <div
+                    class="feature-card group reveal p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 hover:border-brand-400/50 hover:shadow-2xl hover:shadow-brand-500/10 hover:-translate-y-2 transition-all duration-300">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center mb-6 shadow-lg shadow-amber-500/25 group-hover:scale-110 group-hover:rotate-3 transition-all">
+                        <i class="fa-solid fa-file-circle-question text-white text-xl"></i></div>
+                    <h3 class="text-lg font-bold mb-2">Previous Year Questions</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Practice with real exam papers
+                        from previous years to boost your confidence.</p>
+                </div>
+                <div
+                    class="feature-card group reveal p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 hover:border-brand-400/50 hover:shadow-2xl hover:shadow-brand-500/10 hover:-translate-y-2 transition-all duration-300">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/25 group-hover:scale-110 group-hover:rotate-3 transition-all">
+                        <i class="fa-solid fa-layer-group text-white text-xl"></i></div>
+                    <h3 class="text-lg font-bold mb-2">Organized by Subject</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Materials neatly organized by
+                        department, semester, and subject for easy navigation.</p>
+                </div>
+                <div
+                    class="feature-card group reveal p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 hover:border-brand-400/50 hover:shadow-2xl hover:shadow-brand-500/10 hover:-translate-y-2 transition-all duration-300">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-violet-500 flex items-center justify-center mb-6 shadow-lg shadow-purple-500/25 group-hover:scale-110 group-hover:rotate-3 transition-all">
+                        <i class="fa-solid fa-download text-white text-xl"></i></div>
+                    <h3 class="text-lg font-bold mb-2">Easy Downloads</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">One-click downloads via Google
+                        Drive — fast, reliable, and hassle-free.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ DEPARTMENTS ══════════ -->
+    <section id="departments" class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-600 dark:text-brand-400 font-semibold text-sm uppercase tracking-wider">Browse
+                    Departments</span>
+                <h2 class="text-3xl lg:text-5xl font-extrabold mt-3">Find Your <span
+                        class="bg-gradient-to-r from-brand-600 to-purple-500 bg-clip-text text-transparent">Department</span>
+                </h2>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4 reveal" id="deptFilters">
+                <button onclick="filterByDept('all')"
+                    class="dept-chip active group px-6 py-3 rounded-2xl font-semibold text-sm bg-brand-600 text-white shadow-lg shadow-brand-500/25 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <i class="fa-solid fa-grid-2 mr-2"></i>All
+                </button>
+                <button onclick="filterByDept('Computer Science')"
+                    class="dept-chip group px-6 py-3 rounded-2xl font-semibold text-sm bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-brand-400 hover:text-brand-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <i class="fa-solid fa-laptop-code mr-2 text-blue-500"></i>CSE
+                </button>
+                <button onclick="filterByDept('CSIT')"
+                    class="dept-chip group px-6 py-3 rounded-2xl font-semibold text-sm bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-brand-400 hover:text-brand-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <i class="fa-solid fa-network-wired mr-2 text-cyan-500"></i>CSIT
+                </button>
+                <button onclick="filterByDept('AI & ML')"
+                    class="dept-chip group px-6 py-3 rounded-2xl font-semibold text-sm bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-brand-400 hover:text-brand-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <i class="fa-solid fa-brain mr-2 text-rose-500"></i>AI & ML
+                </button>
+                <button onclick="filterByDept('Data analytics')"
+                    class="dept-chip group px-6 py-3 rounded-2xl font-semibold text-sm bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-brand-400 hover:text-brand-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <i class="fa-solid fa-chart-pie mr-2 text-emerald-500"></i>Data Analytics
+                </button>
+                <button onclick="filterByDept('IoT')"
+                    class="dept-chip group px-6 py-3 rounded-2xl font-semibold text-sm bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-brand-400 hover:text-brand-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <i class="fa-solid fa-microchip mr-2 text-amber-500"></i>IoT
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ NOTES / RESOURCES ══════════ -->
+    <section id="notes" class="py-20 lg:py-28 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
+                <div>
+                    <span
+                        class="text-brand-600 dark:text-brand-400 font-semibold text-sm uppercase tracking-wider">Study
+                        Resources</span>
+                    <h2 class="text-3xl lg:text-5xl font-extrabold mt-3">Available <span
+                            class="bg-gradient-to-r from-brand-600 to-purple-500 bg-clip-text text-transparent">Resources</span>
+                    </h2>
+                    <p class="text-slate-500 dark:text-slate-400 mt-2">Explore high-quality study materials for your
+                        semester.</p>
+                </div>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <div class="relative flex-1 min-w-[250px]">
+                        <i
+                            class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="searchInput" placeholder="Search notes, subjects..."
+                            class="w-full pl-12 pr-4 py-3 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all">
+                    </div>
+                    <button onclick="renderMaterials(resources)"
+                        class="px-5 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium text-sm border border-slate-200 dark:border-slate-700 hover:bg-brand-50 dark:hover:bg-brand-500/10 hover:text-brand-600 hover:border-brand-400 transition-all">
+                        <i class="fa-solid fa-rotate-left mr-2"></i>Reset
+                    </button>
+                </div>
+            </div>
+            <div id="materialsContainer" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards rendered by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ UPLOAD ══════════ -->
+    <section id="upload" class="py-20 lg:py-28">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <span
+                    class="text-brand-600 dark:text-brand-400 font-semibold text-sm uppercase tracking-wider">Contribute</span>
+                <h2 class="text-3xl lg:text-5xl font-extrabold mt-3">Upload Your <span
+                        class="bg-gradient-to-r from-brand-600 to-purple-500 bg-clip-text text-transparent">Notes</span>
+                </h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-3">Help fellow students by sharing your study materials.
+                </p>
+            </div>
+            <div
+                class="reveal bg-white dark:bg-slate-800/50 rounded-3xl border border-slate-200/60 dark:border-slate-700/60 p-8 lg:p-12 shadow-xl shadow-slate-200/50 dark:shadow-none">
+                <form id="uploadForm" class="space-y-6" onsubmit="return false;">
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div><label class="block text-sm font-semibold mb-2">Your Name</label><input type="text"
+                                placeholder="John Doe"
+                                class="w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all">
+                        </div>
+                        <div><label class="block text-sm font-semibold mb-2">Subject</label><input type="text"
+                                placeholder="e.g. Data Structures"
+                                class="w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all">
+                        </div>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div><label class="block text-sm font-semibold mb-2">Semester</label>
+                            <select
+                                class="w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all">
+                                <option value="">Select semester</option>
+                                <option>1st Sem</option>
+                                <option>2nd Sem</option>
+                                <option>3rd Sem</option>
+                                <option>4th Sem</option>
+                                <option>5th Sem</option>
+                                <option>6th Sem</option>
+                                <option>7th Sem</option>
+                                <option>8th Sem</option>
+                            </select>
+                        </div>
+                        <div><label class="block text-sm font-semibold mb-2">Department</label>
+                            <select
+                                class="w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all">
+                                <option value="">Select department</option>
+                                <option>CSE</option>
+                                <option>CSIT</option>
+                                <option>AI & ML</option>
+                                <option>Data Analytics</option>
+                                <option>IoT</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Upload File</label>
+                        <div
+                            class="upload-drop-zone relative border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-2xl p-10 text-center hover:border-brand-500 transition-colors cursor-pointer">
+                            <i class="fa-solid fa-cloud-arrow-up text-4xl text-slate-400 dark:text-slate-500 mb-3"></i>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">Drag & drop your file here, or <span
+                                    class="text-brand-600 dark:text-brand-400 font-semibold">browse</span></p>
+                            <p class="text-xs text-slate-400 mt-1">PDF, DOCX, PPT — Max 25MB</p>
+                            <input type="file" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                        </div>
+                    </div>
+                    <button type="submit"
+                        class="w-full py-4 rounded-2xl bg-gradient-to-r from-brand-600 to-brand-500 text-white font-semibold shadow-lg shadow-brand-500/25 hover:shadow-xl hover:shadow-brand-500/40 hover:-translate-y-0.5 transition-all duration-300">
+                        <i class="fa-solid fa-paper-plane mr-2"></i>Submit Notes
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ TESTIMONIALS ══════════ -->
+    <section id="testimonials" class="py-20 lg:py-28 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span
+                    class="text-brand-600 dark:text-brand-400 font-semibold text-sm uppercase tracking-wider">Testimonials</span>
+                <h2 class="text-3xl lg:text-5xl font-extrabold mt-3">What Students <span
+                        class="bg-gradient-to-r from-brand-600 to-purple-500 bg-clip-text text-transparent">Say</span>
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="reveal p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 hover:-translate-y-2 transition-all duration-300">
+                    <div class="flex items-center gap-1 text-amber-400 mb-4"><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">"College Lover is a game
+                        changer! Found all my 6th semester notes in one place. The organized layout makes it so easy to
+                        find what I need."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+                            R</div>
+                        <div>
+                            <div class="font-semibold text-sm">Rahul Sharma</div>
+                            <div class="text-xs text-slate-500">CSE, 6th Sem</div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="reveal p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 hover:-translate-y-2 transition-all duration-300">
+                    <div class="flex items-center gap-1 text-amber-400 mb-4"><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">"Best platform for
+                        college study materials! The PYQs helped me prepare better for exams. Love the dark mode too —
+                        easy on the eyes at night."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white font-bold text-sm">
+                            P</div>
+                        <div>
+                            <div class="font-semibold text-sm">Priya Verma</div>
+                            <div class="text-xs text-slate-500">AI & ML, 6th Sem</div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="reveal p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 hover:-translate-y-2 transition-all duration-300">
+                    <div class="flex items-center gap-1 text-amber-400 mb-4"><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">"I uploaded my notes and
+                        now they're helping other students too. Such a great community! The download process is quick
+                        and hassle-free."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-white font-bold text-sm">
+                            A</div>
+                        <div>
+                            <div class="font-semibold text-sm">Amit Kumar</div>
+                            <div class="text-xs text-slate-500">CSIT, 6th Sem</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ CTA ══════════ -->
+    <section class="py-20 lg:py-28 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-600 via-brand-700 to-purple-700"></div>
+        <div class="hero-blob blob-1 opacity-20"></div>
+        <div class="hero-blob blob-2 opacity-20"></div>
+        <div class="relative z-10 max-w-3xl mx-auto px-4 text-center reveal">
+            <h2 class="text-3xl lg:text-5xl font-extrabold text-white mb-6">Share Your Notes,<br>Help Thousands</h2>
+            <p class="text-brand-200 text-lg mb-10 leading-relaxed">Your contributions make a difference. Upload your
+                study materials and become part of a growing community of students helping students.</p>
+            <a href="#upload"
+                class="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-700 rounded-2xl font-bold shadow-2xl hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+                <i class="fa-solid fa-hand-holding-heart"></i> Contribute Your Notes
+            </a>
+        </div>
+    </section>
+
+    <!-- ══════════ ABOUT ══════════ -->
+    <section id="about" class="py-20 lg:py-28 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <span
+                        class="text-brand-600 dark:text-brand-400 font-semibold text-sm uppercase tracking-wider">About
+                        Us</span>
+                    <h2 class="text-3xl lg:text-5xl font-extrabold mt-3 mb-6">Empowering Students <span
+                            class="bg-gradient-to-r from-brand-600 to-purple-500 bg-clip-text text-transparent">Everywhere</span>
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">College Lover is dedicated to
+                        providing students with the best study materials, notes, and resources to excel in their
+                        academic journey. We believe education should be accessible and free for everyone.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-500/20 flex items-center justify-center text-brand-600 dark:text-brand-400 flex-shrink-0">
+                                <i class="fa-solid fa-bolt"></i></div>
+                            <div>
+                                <h4 class="font-bold text-sm">Fast Access</h4>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Quick download links via Google
+                                    Drive for all resources.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 flex-shrink-0">
+                                <i class="fa-solid fa-shield-halved"></i></div>
+                            <div>
+                                <h4 class="font-bold text-sm">Verified Materials</h4>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Study materials verified and
+                                    curated by top-performing students.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400 flex-shrink-0">
+                                <i class="fa-solid fa-heart"></i></div>
+                            <div>
+                                <h4 class="font-bold text-sm">Free Forever</h4>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">No hidden costs. Built by
+                                    students, purely for students.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <div class="relative">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-brand-500/20 to-purple-500/20 rounded-3xl blur-3xl">
+                        </div>
+                        <div
+                            class="relative bg-gradient-to-br from-brand-50 to-purple-50 dark:from-brand-500/10 dark:to-purple-500/10 rounded-3xl p-10 border border-brand-200/30 dark:border-brand-500/20">
+                            <div class="text-center space-y-8">
+                                <div
+                                    class="w-24 h-24 mx-auto rounded-3xl bg-gradient-to-br from-brand-500 to-purple-600 flex items-center justify-center shadow-2xl shadow-brand-500/30">
+                                    <i class="fa-solid fa-graduation-cap text-white text-4xl"></i></div>
+                                <div class="space-y-2">
+                                    <h3 class="text-2xl font-extrabold">College Lover</h3>
+                                    <p class="text-slate-500 dark:text-slate-400">Your Academic Companion</p>
+                                </div>
+                                <div class="grid grid-cols-3 gap-4 pt-4">
+                                    <div class="p-4 rounded-2xl bg-white/80 dark:bg-slate-800/80">
+                                        <div class="text-2xl font-extrabold text-brand-600 dark:text-brand-400">5+</div>
+                                        <div class="text-xs text-slate-500 mt-1">Depts</div>
+                                    </div>
+                                    <div class="p-4 rounded-2xl bg-white/80 dark:bg-slate-800/80">
+                                        <div class="text-2xl font-extrabold text-brand-600 dark:text-brand-400">500+
+                                        </div>
+                                        <div class="text-xs text-slate-500 mt-1">Notes</div>
+                                    </div>
+                                    <div class="p-4 rounded-2xl bg-white/80 dark:bg-slate-800/80">
+                                        <div class="text-2xl font-extrabold text-brand-600 dark:text-brand-400">1K+
+                                        </div>
+                                        <div class="text-xs text-slate-500 mt-1">Users</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ FOOTER ══════════ -->
+    <footer id="contact" class="bg-slate-900 dark:bg-slate-950 text-slate-400 pt-20 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <a href="#" class="flex items-center gap-2 mb-4">
+                        <div
+                            class="w-9 h-9 bg-gradient-to-br from-brand-500 to-brand-700 rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/25">
+                            <i class="fa-solid fa-graduation-cap text-white text-sm"></i></div><span
+                            class="text-xl font-extrabold text-white">College Lover</span>
+                    </a>
+                    <p class="text-sm leading-relaxed mb-6">Your ultimate hub for high-quality study materials, notes,
+                        and academic resources. Empowering students to excel.</p>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/ankitraj36" target="_blank"
+                            class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-brand-600 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:-translate-y-1"><i
+                                class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ankit-raj-319201307/" target="_blank"
+                            class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-brand-600 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:-translate-y-1"><i
+                                class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://x.com/Baby90Danger" target="_blank"
+                            class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-brand-600 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:-translate-y-1"><i
+                                class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#home" class="hover:text-brand-400 transition-colors">Home</a></li>
+                        <li><a href="#departments" class="hover:text-brand-400 transition-colors">Departments</a></li>
+                        <li><a href="#about" class="hover:text-brand-400 transition-colors">About Us</a></li>
+                        <li><a href="#contact" class="hover:text-brand-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Resources</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#notes" class="hover:text-brand-400 transition-colors">Study Materials</a></li>
+                        <li><a href="#notes" class="hover:text-brand-400 transition-colors">Lecture Notes</a></li>
+                        <li><a href="#notes" class="hover:text-brand-400 transition-colors">Latest Syllabus</a></li>
+                        <li><span class="opacity-50">Question Bank (Coming Soon)</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Get in Touch</h4>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-user text-brand-400 w-5"></i>
+                            <span>Ankit Raj</span>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-brand-400 w-5"></i>
+                            <a href="mailto:ankitraj3736@gmail.com" class="hover:text-brand-400 transition-colors">
+                                ankitraj3736@gmail.com
+                            </a>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-location-dot text-brand-400 w-5"></i>
+                            <span>ITER, Siksha 'O' Anusandhan University, Bhubaneswar, India</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 text-center text-sm">
+                <p>© 2026 College Lover. Designed & Developed by <span class="text-white font-semibold">Ankit
+                        Raj</span>. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop"
+        class="fixed bottom-6 right-6 w-12 h-12 rounded-2xl bg-brand-600 text-white shadow-xl shadow-brand-500/30 flex items-center justify-center opacity-0 invisible translate-y-4 hover:-translate-y-0 hover:scale-110 transition-all duration-300 z-50">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="data.js"></script>
+    <script src="sc.js"></script>
+</body>
+
+</html>

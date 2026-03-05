@@ -1,0 +1,124 @@
+/* ═══════════════════════════════════════════════
+   COLLEGE LOVER — Custom Styles (Tailwind Companion)
+   ═══════════════════════════════════════════════ */
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+.dark ::-webkit-scrollbar-thumb { background: #334155; }
+::selection { background: #6366f1; color: white; }
+
+/* ── Hero Gradient Background ── */
+.hero-gradient {
+    background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 50%, #e0e7ff 100%);
+}
+.dark .hero-gradient {
+    background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e1b4b 100%);
+}
+
+/* ── Hero Floating Blobs ── */
+.hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    animation: blobFloat 12s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+.blob-1 {
+    width: 400px; height: 400px;
+    background: linear-gradient(135deg, rgba(99,102,241,0.25), rgba(168,85,247,0.2));
+    top: -100px; right: -80px;
+}
+.blob-2 {
+    width: 300px; height: 300px;
+    background: linear-gradient(135deg, rgba(236,72,153,0.15), rgba(249,115,22,0.15));
+    bottom: -50px; left: -60px;
+    animation-delay: -4s;
+}
+.blob-3 {
+    width: 200px; height: 200px;
+    background: rgba(99,102,241,0.12);
+    top: 40%; left: 50%;
+    animation-delay: -8s;
+}
+
+@keyframes blobFloat {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(30px, -20px) scale(1.05); }
+    66%  { transform: translate(-20px, 20px) scale(0.95); }
+    100% { transform: translate(15px, -15px) scale(1.02); }
+}
+
+/* ── Scroll Reveal Animation ── */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Material Card Animations ── */
+@keyframes cardFadeIn {
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.card-animate {
+    animation: cardFadeIn 0.5s cubic-bezier(0.4,0,0.2,1) forwards;
+    opacity: 0;
+}
+
+/* ── Upload Drop Zone Hover ── */
+.upload-drop-zone:hover {
+    border-color: #6366f1;
+    background: rgba(99,102,241,0.03);
+}
+.dark .upload-drop-zone:hover {
+    background: rgba(99,102,241,0.06);
+}
+
+/* ── Active Department Chip Styles ── */
+.dept-chip.active {
+    background: linear-gradient(135deg, #4f46e5, #6366f1) !important;
+    color: white !important;
+    border-color: transparent !important;
+    box-shadow: 0 8px 24px rgba(99,102,241,0.3);
+}
+
+/* ── Navbar Scrolled State ── */
+.navbar-scrolled {
+    box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+}
+.dark .navbar-scrolled {
+    box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+}
+
+/* ── Back to Top Visible ── */
+#backToTop.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ── Smooth Counter Transition ── */
+.counter { transition: all 0.1s ease-out; }
+
+/* ── Mobile Menu Animation ── */
+#mobileMenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+#mobileMenu.open {
+    max-height: 500px;
+}
+
+/* ── Pulse glow on CTA button ── */
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0.4); }
+    50%      { box-shadow: 0 0 0 12px rgba(99,102,241,0); }
+}
