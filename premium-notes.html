@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Get premium study notes, PYQs, and exam-ready materials for just ₹99. Boost your college exam preparation with high-quality content.">
+    <title>Premium Notes – Unlock High Quality Study Material</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="graduate-cap.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ══════════ Premium Notes — Page-Specific Styles ══════════ */
+
+        /* Premium Badge in Hero */
+        .premium-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 99px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(168, 85, 247, 0.12));
+            color: #f59e0b;
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            margin-bottom: 1.5rem;
+        }
+
+        .dark .premium-hero-badge {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(168, 85, 247, 0.15));
+            color: #fbbf24;
+        }
+
+        /* Price tag on cards */
+        .card-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--brand-600);
+            margin-bottom: 1.25rem;
+        }
+
+        .dark .card-price {
+            color: var(--brand-400);
+        }
+
+        .card-price span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        /* Buy button */
+        .buy-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--brand-600), var(--brand-500));
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+            transition: all var(--transition);
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .buy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Card features list */
+        .card-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .card-features-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .card-features-list li i {
+            color: #10b981;
+            font-size: 0.75rem;
+            width: 16px;
+            text-align: center;
+        }
+
+        /* Card subject subtitle */
+        .card-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* FAQ Styles */
+        .faq-list {
+            max-width: 740px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: inherit;
+            text-align: left;
+            transition: color var(--transition);
+        }
+
+        .faq-question:hover {
+            color: var(--brand-600);
+        }
+
+        .dark .faq-question:hover {
+            color: var(--brand-400);
+        }
+
+        .faq-question .arrow {
+            transition: transform 0.3s;
+            color: var(--brand-500);
+            font-size: 0.85rem;
+        }
+
+        .faq-item.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s;
+            padding: 0 1.5rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 1.5rem 1.25rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.7;
+        }
+
+        /* Payment Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            animation: modalIn 0.4s ease;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal .modal-branch {
+            color: var(--brand-600);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .dark .modal .modal-branch {
+            color: var(--brand-400);
+        }
+
+        .modal .modal-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--brand-600);
+            margin: 1rem 0;
+        }
+
+        .dark .modal .modal-price {
+            color: var(--brand-400);
+        }
+
+        .modal p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-pay-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.9rem 2rem;
+            border-radius: var(--radius-lg);
+            font-weight: 700;
+            font-size: 1rem;
+            background: linear-gradient(135deg, var(--brand-600), var(--brand-500));
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.25);
+            transition: all var(--transition);
+            margin-bottom: 0.75rem;
+            font-family: inherit;
+        }
+
+        .modal-pay-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(99, 102, 241, 0.35);
+        }
+
+        .modal-close {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.65rem 1.5rem;
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all var(--transition);
+            font-family: inherit;
+        }
+
+        .modal-close:hover {
+            border-color: var(--brand-400);
+            color: var(--brand-600);
+        }
+
+        /* Razorpay branding on pay button */
+        .modal-pay-btn .razorpay-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.7rem;
+            opacity: 0.85;
+            font-weight: 500;
+        }
+
+        .modal-pay-btn .razorpay-badge img {
+            height: 14px;
+            filter: brightness(10);
+        }
+
+        .modal-secure-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .modal-secure-note i {
+            color: #10b981;
+            font-size: 0.7rem;
+        }
+
+        /* Success Toast */
+        .payment-toast {
+            position: fixed;
+            top: 80px;
+            right: 1.5rem;
+            z-index: 300;
+            min-width: 340px;
+            max-width: 420px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 1.5rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transform: translateX(120%);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(12px);
+        }
+
+        .payment-toast.show {
+            transform: translateX(0);
+        }
+
+        .payment-toast-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .payment-toast-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            animation: toastCheckPop 0.5s ease 0.3s both;
+        }
+
+        @keyframes toastCheckPop {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .payment-toast-icon i {
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .payment-toast-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .payment-toast-subtitle {
+            font-size: 0.8rem;
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .payment-toast-body {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        .payment-toast-id {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: monospace;
+            background: var(--bg-card);
+            padding: 0.35rem 0.75rem;
+            border-radius: var(--radius-sm);
+            display: inline-block;
+        }
+
+        .payment-toast-close {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            transition: all var(--transition);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .payment-toast-close:hover {
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        .payment-toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #10b981, #059669);
+            border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+            animation: toastProgress 5s linear forwards;
+        }
+
+        @keyframes toastProgress {
+            from {
+                width: 100%;
+            }
+
+            to {
+                width: 0%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgress" class="scroll-progress"></div>
+
+    <!-- ══════════ NAVBAR ══════════ -->
+    <nav id="navbar" class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <span class="nav-logo-text">College Lover</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#notes" class="nav-link">Notes</a>
+                <a href="index.html#notes" class="nav-link">PYQs</a>
+                <a href="#" class="nav-link premium-link active">Premium Notes ✨</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <button id="themeToggle" class="theme-btn" title="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button id="menuBtn" class="menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu">
+            <div class="mobile-menu-inner">
+                <a href="index.html" class="mobile-link">Home</a>
+                <a href="index.html#notes" class="mobile-link">Notes</a>
+                <a href="index.html#notes" class="mobile-link">PYQs</a>
+                <a href="#" class="mobile-link">Premium Notes ✨</a>
+                <a href="index.html#about" class="mobile-link">About</a>
+                <a href="index.html#contact" class="mobile-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ══════════ HERO ══════════ -->
+    <section id="home" class="hero">
+        <canvas id="particleCanvas"></canvas>
+        <div class="hero-blob blob-1"></div>
+        <div class="hero-blob blob-2"></div>
+        <div class="hero-blob blob-3"></div>
+        <div class="hero-content">
+            <div class="reveal">
+                <span class="premium-hero-badge">
+                    <i class="fa-solid fa-crown"></i> Premium Study Materials
+                </span>
+            </div>
+            <h1 class="reveal">Boost Your Exam<br><span class="gradient-text">Preparation 🚀</span></h1>
+            <p class="hero-desc reveal">
+                Get premium notes, PYQs, and exam-ready materials for just ₹99 per resource. Study smarter, score
+                higher.
+            </p>
+            <div class="hero-btns reveal">
+                <a href="#premium-notes" class="btn-primary">
+                    <i class="fa-solid fa-book-open"></i> Explore Premium Notes
+                </a>
+                <a href="index.html#notes" class="btn-secondary">
+                    <i class="fa-solid fa-arrow-left"></i> Free Resources
+                </a>
+            </div>
+            <div class="hero-stats reveal">
+                <div>
+                    <div class="hero-stat-num">20+</div>
+                    <div class="hero-stat-label">Study Materials</div>
+                </div>
+                <div>
+                    <div class="hero-stat-num">5+</div>
+                    <div class="hero-stat-label">Departments</div>
+                </div>
+                <div>
+                    <div class="hero-stat-num">5K+</div>
+                    <div class="hero-stat-label">Students</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ FEATURES ══════════ -->
+    <section id="features" class="section section-alt">
+        <div class="container">
+            <header class="section-header reveal">
+                <span class="section-label">Why Go Premium</span>
+                <h2 class="section-title">Everything You Need to <span class="highlight">Ace Your Exams</span></h2>
+            </header>
+            <div class="features-grid">
+                <article class="feature-card reveal">
+                    <div class="feature-icon blue"><i class="fa-solid fa-bullseye"></i></div>
+                    <h3>Exam-Focused Content</h3>
+                    <p>Notes designed to cover exactly what appears in exams, saving your time.</p>
+                </article>
+                <article class="feature-card reveal">
+                    <div class="feature-icon amber"><i class="fa-solid fa-clipboard-list"></i></div>
+                    <h3>Updated Syllabus</h3>
+                    <p>Content aligned with the latest university syllabus and exam patterns.</p>
+                </article>
+                <article class="feature-card reveal">
+                    <div class="feature-icon green"><i class="fa-solid fa-book-open"></i></div>
+                    <h3>Easy to Understand</h3>
+                    <p>Simplified language with diagrams, formulas, and clear explanations.</p>
+                </article>
+                <article class="feature-card reveal">
+                    <div class="feature-icon purple"><i class="fa-solid fa-coins"></i></div>
+                    <h3>One-Time Payment</h3>
+                    <p>Pay once and get lifetime access. No subscriptions, no hidden charges.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ PREMIUM NOTES / RESOURCES ══════════ -->
+    <section id="premium-notes" class="section">
+        <div class="container">
+            <div class="notes-header reveal">
+                <div>
+                    <span class="section-label">Premium Resources</span>
+                    <h2 class="section-title">Premium <span class="highlight">Study Materials</span></h2>
+                    <p class="section-desc">Get instant access to high-quality notes, textbooks & resources for just ₹99
+                        each.</p>
+                </div>
+                <div class="notes-actions">
+                    <div class="search-wrap">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Search premium notes...">
+                    </div>
+                </div>
+            </div>
+            <div id="materialsContainer" class="materials-grid">
+                <!-- Cards rendered by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ TESTIMONIALS ══════════ -->
+    <section id="testimonials" class="section section-alt">
+        <div class="container">
+            <header class="section-header reveal">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title">What Students <span class="highlight">Say</span></h2>
+            </header>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                    <p>"These notes are a lifesaver! I scored 9.2 SGPA last sem just by studying from PremiumNotes.
+                        Totally worth every rupee."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">A</div>
+                        <div>
+                            <div class="author-name">Ananya Sharma</div>
+                            <div class="author-role">CSE, 3rd Year</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                    <p>"The PYQs and important questions section helped me predict almost 80% of the paper. Best
+                        investment I've made for my studies."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background:linear-gradient(135deg,#10b981,#14b8a6)">R</div>
+                        <div>
+                            <div class="author-name">Rahul Verma</div>
+                            <div class="author-role">ECE, 2nd Year</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star-half-stroke"></i></div>
+                    <p>"Clean PDFs, well-organized by unit, and super easy to revise. I recommended it to my entire
+                        class!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background:linear-gradient(135deg,#f59e0b,#f97316)">P</div>
+                        <div>
+                            <div class="author-name">Priya Patel</div>
+                            <div class="author-role">AI & ML, 4th Year</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ FAQ ══════════ -->
+    <section id="faq" class="section">
+        <div class="container">
+            <header class="section-header reveal">
+                <span class="section-label">FAQ</span>
+                <h2 class="section-title">Frequently Asked <span class="highlight">Questions</span></h2>
+            </header>
+            <div class="faq-list" id="faqList">
+                <!-- Rendered by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ CTA ══════════ -->
+    <section class="cta-section">
+        <div class="hero-blob blob-1"></div>
+        <div class="hero-blob blob-2"></div>
+        <div class="cta-content reveal">
+            <h2>Ready to Ace<br>Your Exams? 🎯</h2>
+            <p>Join thousands of students already studying with premium notes. One-time payment, lifetime access.</p>
+            <a href="#premium-notes" class="cta-btn"><i class="fa-solid fa-rocket"></i> Get Started for ₹99</a>
+        </div>
+    </section>
+
+    <!-- ══════════ FOOTER ══════════ -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="nav-logo" style="margin-bottom:1rem;display:inline-flex">
+                        <div class="nav-logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <span style="font-size:1.25rem;font-weight:800;color:#fff">College Lover</span>
+                    </a>
+                    <p class="footer-desc">Your ultimate hub for high-quality study materials, notes, and academic
+                        resources. Empowering students to excel.</p>
+                    <div class="footer-socials">
+                        <a href="https://github.com/ankitraj36" target="_blank" class="social-link"><i
+                                class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ankit-raj-319201307/" target="_blank"
+                            class="social-link"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://x.com/Baby90Danger" target="_blank" class="social-link"><i
+                                class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="index.html#departments">Departments</a>
+                        <a href="#">Premium Notes ✨</a>
+                        <a href="index.html#about">About Us</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <div class="footer-links">
+                        <a href="index.html#notes">Study Materials</a>
+                        <a href="index.html#notes">Lecture Notes</a>
+                        <a href="index.html#notes">Latest Syllabus</a>
+                        <a href="#premium-notes">Premium Notes</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Get in Touch</h4>
+                    <div class="footer-contact">
+                        <div class="footer-contact-item">
+                            <i class="fa-solid fa-user"></i><span>Ankit Raj</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:ankitraj3736@gmail.com" style="color:inherit">ankitraj3736@gmail.com</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>ITER, Siksha 'O' Anusandhan University, Bhubaneswar, India</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 College Lover. Designed & Developed by <span>Ankit Raj</span>. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <!-- ══════════ PAYMENT MODAL ══════════ -->
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal">
+            <h3>Complete Your Purchase</h3>
+            <div class="modal-branch" id="modalBranch"></div>
+            <div class="modal-price">₹99</div>
+            <p>One-time payment · Lifetime access · Instant download</p>
+            <div class="modal-secure-note">
+                <i class="fa-solid fa-shield-halved"></i>
+                Secured by Razorpay · 256-bit SSL Encryption
+            </div>
+            <button class="modal-pay-btn" id="modalPayBtn">
+                <i class="fa-solid fa-lock"></i> Pay ₹99 Securely
+            </button>
+            <button class="modal-close" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- ══════════ PAYMENT SUCCESS TOAST ══════════ -->
+    <div class="payment-toast" id="paymentToast">
+        <button class="payment-toast-close" onclick="closeToast()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="payment-toast-header">
+            <div class="payment-toast-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+                <div class="payment-toast-title">Payment Successful! 🎉</div>
+                <div class="payment-toast-subtitle">₹99 paid via Razorpay</div>
+            </div>
+        </div>
+        <div class="payment-toast-body" id="toastBody">
+            Your premium notes are now unlocked! Check your email for the download link.
+        </div>
+        <div class="payment-toast-id" id="toastPaymentId"></div>
+        <div class="payment-toast-progress"></div>
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="data.js"></script>
+    <script>
+        /* ══════════ SCROLL ANIMATIONS (must be declared first) ══════════ */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); revealObserver.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+
+        /* ══════════ SUBJECT & TYPE METADATA ══════════ */
+        const subjectMeta = {
+            "Computer Science": { icon: "fa-laptop-code", color: "#3b82f6", bg: "blue" },
+            "CSIT": { icon: "fa-network-wired", color: "#06b6d4", bg: "blue" },
+            "AI & ML": { icon: "fa-brain", color: "#f43f5e", bg: "purple" },
+            "Data analytics": { icon: "fa-chart-pie", color: "#10b981", bg: "green" },
+            "IoT": { icon: "fa-microchip", color: "#f59e0b", bg: "amber" },
+        };
+        const typeBadgeColors = {
+            "PDF": { bg: "rgba(239,68,68,0.1)", color: "#ef4444", darkColor: "#f87171" },
+            "PPT": { bg: "rgba(249,115,22,0.1)", color: "#f97316", darkColor: "#fb923c" },
+            "Textbook": { bg: "rgba(139,92,246,0.1)", color: "#8b5cf6", darkColor: "#a78bfa" },
+        };
+
+        function getSubjectLabel(subj) {
+            return Array.isArray(subj) ? subj.join(", ") : subj;
+        }
+        function getSubjectMeta(subj) {
+            const key = Array.isArray(subj) ? subj[0] : subj;
+            return subjectMeta[key] || { icon: "fa-book", color: "#6366f1", bg: "blue" };
+        }
+
+        /* ══════════ RENDER PREMIUM RESOURCE CARDS ══════════ */
+        function renderPremiumCards(data) {
+            const container = document.getElementById("materialsContainer");
+            if (!data.length) {
+                container.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-icon"><i class="fa-solid fa-search"></i></div>
+                    <h3>No results found</h3>
+                    <p style="color:var(--text-muted)">Try a different search term.</p>
+                </div>`;
+                return;
+            }
+            container.innerHTML = data.map((r, i) => {
+                const meta = getSubjectMeta(r.subject);
+                const tBadge = typeBadgeColors[r.type] || typeBadgeColors["PDF"];
+                const subjLabel = getSubjectLabel(r.subject);
+                return `
+            <div class="material-card card-animate reveal" style="animation-delay:${i * 0.06}s">
+                <div class="card-top">
+                    <div class="card-icon ${meta.bg}" style="background:linear-gradient(135deg,${meta.color},${meta.color}dd)">
+                        <i class="fa-solid ${meta.icon}"></i>
+                    </div>
+                    <span class="card-sem">${r.semester}</span>
+                </div>
+                <div class="card-title">${r.title}</div>
+                <div class="card-tags">
+                    <span class="card-tag" style="background:${tBadge.bg};color:${tBadge.color}">${r.type}</span>
+                    <span class="card-tag" style="background:rgba(99,102,241,0.1);color:var(--brand-500)">${r.size}</span>
+                </div>
+                <div class="card-subject"><i class="fa-solid fa-layer-group"></i> ${subjLabel}</div>
+                <ul class="card-features-list">
+                    <li><i class="fa-solid fa-check"></i> Exam-focused content</li>
+                    <li><i class="fa-solid fa-check"></i> Instant download</li>
+                    <li><i class="fa-solid fa-check"></i> Lifetime access</li>
+                </ul>
+                <div class="card-price">₹99 <span>/ one-time</span></div>
+                <div class="card-actions">
+                    <button class="buy-btn" data-title="${r.title.replace(/"/g, '&quot;')}" data-index="${i}">
+                        <i class="fa-solid fa-cart-shopping"></i> Buy Now
+                    </button>
+                </div>
+            </div>`;
+            }).join("");
+
+            // Attach click handlers to Buy Now buttons
+            container.querySelectorAll('.buy-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    openModal(this.dataset.title, parseInt(this.dataset.index));
+                });
+            });
+
+            // Re-observe reveal animations
+            document.querySelectorAll(".reveal:not(.visible)").forEach(el => revealObserver.observe(el));
+        }
+
+        renderPremiumCards(resources);
+
+        /* ══════════ SEARCH ══════════ */
+        document.getElementById("searchInput").addEventListener("input", function () {
+            const q = this.value.toLowerCase().trim();
+            if (!q) { renderPremiumCards(resources); return; }
+            const filtered = resources.filter(r => {
+                const subj = Array.isArray(r.subject) ? r.subject.join(" ") : r.subject;
+                return r.title.toLowerCase().includes(q) || subj.toLowerCase().includes(q) ||
+                    r.type.toLowerCase().includes(q) || r.semester.toLowerCase().includes(q);
+            });
+            renderPremiumCards(filtered);
+        });
+
+        /* ══════════ FAQ ══════════ */
+        const faqs = [
+            { q: "How do I access notes after payment?", a: "After payment, you'll receive a download link via email and WhatsApp within 5 minutes. You can also access them from your dashboard anytime." },
+            { q: "Is it lifetime access?", a: "Yes! Once you purchase, you get lifetime access to all the notes, including future updates at no extra cost." },
+            { q: "Can I download PDFs?", a: "Absolutely. All notes are available as downloadable PDF files that you can save offline and print anytime." },
+            { q: "What if I'm not satisfied?", a: "We offer a 7-day money-back guarantee. If you're not happy with the quality, we'll refund your full payment." },
+            { q: "Are the notes available for all semesters?", a: "Currently we have 6th semester notes. More semesters are being added regularly." }
+        ];
+        document.getElementById("faqList").innerHTML = faqs.map((f, i) => `
+        <div class="faq-item reveal" id="faq-${i}">
+            <button class="faq-question" onclick="toggleFaq(${i})">
+                <span>${f.q}</span>
+                <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer"><p>${f.a}</p></div>
+        </div>`).join("");
+
+        function toggleFaq(i) { document.getElementById("faq-" + i).classList.toggle("active"); }
+
+        /* ══════════ PAYMENT MODAL + RAZORPAY CHECKOUT ══════════ */
+        /*
+         * Razorpay Standard Checkout — embedded payment modal
+         * ⚠️ IMPORTANT: Replace the key below with your Razorpay API Key ID
+         *    Dashboard → Settings → API Keys → Key Id
+         */
+        const RAZORPAY_KEY_ID = "rzp_live_SahNSl2fDtjO3X";
+
+        let selectedTitle = "";
+        let selectedIndex = -1;
+
+        function openModal(title, idx) {
+            selectedTitle = title;
+            selectedIndex = idx;
+            document.getElementById("modalBranch").textContent = title;
+            document.getElementById("paymentModal").classList.add("show");
+        }
+
+        function closeModal() {
+            document.getElementById("paymentModal").classList.remove("show");
+        }
+
+        document.getElementById("paymentModal").addEventListener("click", function (e) {
+            if (e.target === this) closeModal();
+        });
+
+        /* ── Pay Button → Open Razorpay Checkout on this page ── */
+        document.getElementById("modalPayBtn").addEventListener("click", function () {
+            const payBtn = this;
+            payBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+            payBtn.disabled = true;
+
+            const options = {
+                key: RAZORPAY_KEY_ID,
+                amount: 9900, // ₹99 in paise
+                currency: "INR",
+                name: "College Lover",
+                description: selectedTitle,
+                image: "https://i.imgur.com/3g7nmJC.png", // your logo
+                handler: function (response) {
+                    // Payment successful!
+                    closeModal();
+                    showPaymentToast(response.razorpay_payment_id, selectedTitle);
+                },
+                prefill: {
+                    name: "",
+                    email: "",
+                    contact: ""
+                },
+                notes: {
+                    resource: selectedTitle
+                },
+                theme: {
+                    color: "#6366f1"
+                },
+                modal: {
+                    ondismiss: function () {
+                        // User closed Razorpay modal without paying
+                        payBtn.innerHTML = '<i class="fa-solid fa-lock"></i> Pay ₹99 Securely';
+                        payBtn.disabled = false;
+                    }
+                }
+            };
+
+            const rzp = new Razorpay(options);
+            rzp.on('payment.failed', function (response) {
+                alert('Payment failed. Please try again.');
+                payBtn.innerHTML = '<i class="fa-solid fa-lock"></i> Pay ₹99 Securely';
+                payBtn.disabled = false;
+            });
+            rzp.open();
+
+            // Reset button after Razorpay opens
+            payBtn.innerHTML = '<i class="fa-solid fa-lock"></i> Pay ₹99 Securely';
+            payBtn.disabled = false;
+        });
+
+        /* ── Show success toast after payment ── */
+        function showPaymentToast(paymentId, title) {
+            const toast = document.getElementById('paymentToast');
+            const toastBody = document.getElementById('toastBody');
+            const toastPaymentId = document.getElementById('toastPaymentId');
+            toastBody.textContent = `Your premium notes for "${title}" are now unlocked! Check your email for the download link.`;
+            toastPaymentId.textContent = `Payment ID: ${paymentId}`;
+            toast.classList.add('show');
+            // Auto-hide after 5 seconds
+            setTimeout(() => { toast.classList.remove('show'); }, 5500);
+        }
+
+        function closeToast() {
+            document.getElementById('paymentToast').classList.remove('show');
+        }
+
+        /* ══════════ THEME TOGGLE ══════════ */
+        const themeToggle = document.getElementById("themeToggle");
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.documentElement.classList.add("dark");
+            themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        }
+        themeToggle.addEventListener("click", () => {
+            document.documentElement.classList.toggle("dark");
+            const isDark = document.documentElement.classList.contains("dark");
+            themeToggle.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+
+        /* ══════════ MOBILE MENU ══════════ */
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        menuBtn.addEventListener("click", () => {
+            const isOpen = mobileMenu.classList.contains("open");
+            mobileMenu.classList.toggle("open", !isOpen);
+            menuBtn.querySelector("i").className = isOpen ? "fa-solid fa-bars" : "fa-solid fa-xmark";
+        });
+        document.querySelectorAll(".mobile-link").forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.remove("open");
+                menuBtn.querySelector("i").className = "fa-solid fa-bars";
+            });
+        });
+
+        /* ══════════ OBSERVE ALL CURRENT REVEALS ══════════ */
+        document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+        /* ══════════ NAVBAR SCROLL ══════════ */
+        window.addEventListener("scroll", () => {
+            const navbar = document.getElementById("navbar");
+            navbar.classList.toggle("scrolled", window.scrollY > 50);
+
+            // Scroll progress
+            const scrollProgress = document.getElementById("scrollProgress");
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            scrollProgress.style.width = (scrollTop / docHeight * 100) + "%";
+
+            // Back to top
+            const backToTop = document.getElementById("backToTop");
+            backToTop.classList.toggle("visible", window.scrollY > 400);
+        });
+
+        document.getElementById("backToTop").addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+
+        /* ══════════ PARTICLE CANVAS ══════════ */
+        const canvas = document.getElementById("particleCanvas");
+        if (canvas) {
+            const ctx = canvas.getContext("2d");
+            let particles = [];
+            function resizeCanvas() {
+                canvas.width = canvas.parentElement.offsetWidth;
+                canvas.height = canvas.parentElement.offsetHeight;
+            }
+            function createParticles() {
+                particles = [];
+                const count = Math.min(60, Math.floor(canvas.width * canvas.height / 15000));
+                for (let i = 0; i < count; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+                        size: Math.random() * 2 + 0.5, speedX: (Math.random() - 0.5) * 0.5,
+                        speedY: (Math.random() - 0.5) * 0.5, opacity: Math.random() * 0.5 + 0.1
+                    });
+                }
+            }
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const isDark = document.documentElement.classList.contains('dark');
+                const color = isDark ? '129, 140, 248' : '99, 102, 241';
+                particles.forEach(p => {
+                    p.x += p.speedX; p.y += p.speedY;
+                    if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
+                    if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
+                    ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${color}, ${p.opacity})`; ctx.fill();
+                });
+                // Draw connections
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 120) {
+                            ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(${color}, ${0.08 * (1 - dist / 120)})`;
+                            ctx.lineWidth = 0.5; ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animateParticles);
+            }
+            resizeCanvas(); createParticles(); animateParticles();
+            window.addEventListener("resize", () => { resizeCanvas(); createParticles(); });
+        }
+    </script>
+</body>
+
+</html>
